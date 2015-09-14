@@ -1,0 +1,17 @@
+<ul>
+
+  <% @questions.each do |question| %>
+
+<table>
+   <tr>
+     <th>Questions</th>
+   </tr>
+   <tr>
+     <td><%= link_to question.title, question_path(question) %></td>
+   </tr>
+</table>
+
+
+  <% end %>
+
+</ul>
