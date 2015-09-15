@@ -10,21 +10,19 @@ feature 'user views all questions', %(
   - [x] I must see questions listed in order, most recently posted first
 ) do
 
-  scenario 'see all questions' do
-    question_1 = Question.create(
-      title: "hellohellohellohellohellohellohellohellohello",
-      description: "something something something something something something something something something something something something something something something something something ",
-      user_id: '2'
-    )
-
-    question_2 = Question.create(
-      title: "goodbye goodbye goodbye goodbye goodbye goodbye goodbye goodbye ",
-      description: "something something something something something something something something something something something something something something something something something ",
-      user_id: '3'
-    )
+  scenario 'user sees all questions' do
+    question_1 = FactoryGirl.create(:question)
+    question_2 = FactoryGirl.create(:question)
     visit root_path
     expect(page).to have_content(question_2.title)
     expect(page).to have_content(question_1.title)
+  end
+
+  scenario 'user sees newest question first' do
+    question_1 = FactoryGirl.create(:question)
+    question_2 = FactoryGirl.create(:question)
+    visit root_path
+    save_and_open_page
     expect(page.body).to have_content(/#{question_2.title}.*#{question_1.title}/im)
   end
 end

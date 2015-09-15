@@ -1,3 +1,9 @@
-  <h1><%= @question.title %></h1>
-  <%= @question.description %>
+<h1>
+  <%= @question.title %>
+</h1>
+  <div class="small-3 columns">
+    <div class="small-12 columns">
+    <%= @question.description %>
+  </div>
+  </div>
 <%= link_to 'Back to index', root_path %>

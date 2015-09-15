@@ -53,3 +53,5 @@ gem 'valid_attribute', group: [:development, :test]
 gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'devise'
 gem 'foundation-rails'
+gem 'faker', group: [:development, :test]
+gem 'database_cleaner', group: [:development, :test]
