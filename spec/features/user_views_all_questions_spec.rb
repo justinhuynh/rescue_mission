@@ -22,7 +22,6 @@ feature 'user views all questions', %(
     question_1 = FactoryGirl.create(:question)
     question_2 = FactoryGirl.create(:question)
     visit root_path
-    save_and_open_page
     expect(page.body).to have_content(/#{question_2.title}.*#{question_1.title}/im)
   end
 end

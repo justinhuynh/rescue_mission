@@ -18,6 +18,11 @@
         <a class="logo" href="/">Rescue Mission</a>
       </div>
     </div>
+    <div class="container">
+      <% flash.each do |key, value| %>
+      <div class="alert"><%= value %></div>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

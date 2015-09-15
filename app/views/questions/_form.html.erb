@@ -19,7 +19,13 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
+
+  <div class="field">
+    <%= f.label :user %><br>
+    <%= f.number_field :user %>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Question" %>
   </div>
 <% end %>

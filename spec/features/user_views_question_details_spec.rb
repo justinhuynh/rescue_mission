@@ -6,9 +6,9 @@ feature 'user views question detail', %(
   So that I can effectively understand the question
 
   Acceptance Criteria
-  - [ ] I must be able to get to this page from the questions index
-  - [ ] I must see the question's title
-  - [ ] I must see the question's description
+  - [x] I must be able to get to this page from the questions index
+  - [x] I must see the question's title
+  - [x] I must see the question's description
 ) do
 
   scenario 'view question details' do
