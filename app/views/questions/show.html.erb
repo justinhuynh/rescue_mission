@@ -6,5 +6,16 @@
       <%= @question.description %>
     </div>
   </div>
-  <%= render '/answers/form' %>
+  <thead>
+    <tr><th>Answers for <%= @question.title %></th></tr>
+  </thead>
+  <% @answers.each do |answer| %>
+ <tr>
+   <td>
+     <%= answer.description %>
+   </td>
+ </tr>
+<% end %>
+  <%= render 'answers/form' %>
+
 <%= link_to 'Back to index', root_path %>
