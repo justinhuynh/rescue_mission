@@ -11,21 +11,28 @@ feature 'user answers a question', %(
   - [ ] I must be presented with errors if I fill out the form incorrectly
 ) do
 
-  question = FactoryGirl.create(:question)
-  user = FactoryGirl.create(:user)
-
   scenario 'user successfully answers question' do
+    question = FactoryGirl.create(:question)
+    user = FactoryGirl.create(:user)
     visit question_path(question)
 
     expect(page).to have_content('New Answer')
-    fill_in 'Description', with:
+    fill_in 'Description', with: "This is an answer description" * 20
     click_button 'Add Answer'
 
-    # expect(page).to have_content(/Question added/i)
-    # expect(page).to have_content(question.title)
+    expect(page).to have_content(question.title)
+    expect(page).to have_content("This is an answer description")
+    expect(page).to have_content("Answer added")
   end
 
   scenario 'user enters invalid answer' do
+    question = FactoryGirl.create(:question)
+    user = FactoryGirl.create(:user)
+    visit question_path(question)
+
+    expect(page).to have_content('New Answer')
+    fill_in 'Description', with: "This is an answer description" * 20
+    click_button 'Add Answer'
 
   end
 
