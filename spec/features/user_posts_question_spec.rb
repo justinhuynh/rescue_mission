@@ -19,7 +19,7 @@ feature 'user posts a question', %(
     fill_in 'Title', with: question.title
     fill_in 'Description', with: question.description
     fill_in 'User', with: user.id
-    click_button 'Add Question'
+    click_button 'Create Question'
 
     expect(page).to have_content(/Question added/i)
     expect(page).to have_content(question.title)
@@ -32,7 +32,7 @@ feature 'user posts a question', %(
     fill_in 'Title', with: 'This should be a fail question'
     fill_in 'Description', with: 'It has nothing to do with the database' * 10
     fill_in 'User', with: user.id
-    click_button 'Add Question'
+    click_button 'Create Question'
     expect(page).to have_content("Title is too short (minimum is 40 characters)")
     expect(page).to have_content('New Question')
   end
@@ -44,7 +44,7 @@ feature 'user posts a question', %(
     fill_in 'Title', with: 'This should be a fail question' * 4
     fill_in 'Description', with: 'It has nothing to do with the database'
     fill_in 'User', with: user.id
-    click_button 'Add Question'
+    click_button 'Create Question'
 
     expect(page).to have_content("Description is too short (minimum is 150 characters)")
     expect(page).to have_content('New Question')

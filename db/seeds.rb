@@ -14,3 +14,10 @@ question_attributes = {
 }
   Question.create(question_attributes)
 end
+
+10.times do
+user_attributes = {
+  name: "#{Faker::Name.name}"
+}
+  User.create(user_attributes)
+end

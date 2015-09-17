@@ -50,3 +50,4 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'faker', group: [:development, :test]
 gem 'database_cleaner', group: [:development, :test]
+gem 'capybara-webkit', group: [:development, :test]

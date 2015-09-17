@@ -7,23 +7,45 @@ feature 'user views answers to a question', %(
 
   Acceptance Criteria
 
-  - [ ] I must be on the question detail page
-  - [ ] I must only see answers to the question I'm viewing
-  - [ ] I must see all answers listed in order, most recent last
+  - [x] I must be on the question detail page
+  - [x] I must only see answers to the question I'm viewing
+  - [x] I must see all answers listed in order, most recent last
 ) do
 
-  scenario 'user visits question details and sees answers' do
+  scenario 'user visits question details and sees answers, listed in order with most recent last' do
     question = FactoryGirl.create(:question)
     user = FactoryGirl.create(:user)
-    answer = FactoryGirl.create(:answer)
-    answer.question = question
+    answer_1 = FactoryGirl.create(:answer)
+    answer_2 = FactoryGirl.create(:answer)
+    answer_1.question = question
+    answer_2.question = question
+    question.answers << answer_1
+    question.answers << answer_2
     visit question_path(question)
-    save_and_open_page
 
     expect(page).to have_content(question.description)
-    save_and_open_page
-    expect(page).to have_content(answer.description)
-    # expect(page).to have_content("This is an answer description")
-    # expect(page).to have_content("Answer added")
+    expect(page.body).to have_content(/#{answer_2.description}.*#{answer_1.description}/im)
+  end
+
+  scenario 'user sees answers only associated with current question' do
+    question_1 = FactoryGirl.create(:question)
+    question_2 = FactoryGirl.create(:question)
+    user = FactoryGirl.create(:user)
+    answer_1 = FactoryGirl.create(:answer)
+    answer_2 = FactoryGirl.create(:answer)
+
+    answer_1.question = question_1
+    question_1.answers << answer_1
+
+    answer_2.question = question_2
+    question_2.answers << answer_2
+
+    visit question_path(question_2)
+
+    expect(page).to have_content(question_2.title)
+    expect(page).to have_content(answer_2.description)
+
+    expect(page).to_not have_content(question_1.title)
+    expect(page).to_not have_content(answer_1.description)
   end
 end

@@ -25,7 +25,7 @@ FactoryGirl.define do
   end
 
   factory :answer do
-    sequence(:description) { |n| "answer #{n}" * 50 }
+    sequence(:description) { |n| "Answer #{n}" * 50 }
     sequence(:user_id) { |n| n }
     sequence(:question_id) { |n| n }
   end
