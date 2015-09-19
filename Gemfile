@@ -10,6 +10,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'omniauth-github'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'web-console', '~> 2.0'
